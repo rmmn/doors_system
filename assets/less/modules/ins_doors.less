@@ -1,21 +1,11 @@
 // main: ../style.less
 
-.hero {
-    height: 100vh;
-    background: transparent url("../../img/offer-1.png") no-repeat center;
-    background-size: cover;
-    padding-top: 90px;
-
+.ins_doors {
     &_container {
-        height: 100%;
 
         .content {
-            height: 100%;
-            max-width: 570px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-
             .slider {
+                margin-top: 60px;
                 height: 100%;
                 display: grid;
                 grid-template-columns: 1fr;
@@ -23,32 +13,32 @@
 
                 .slides {
                     height: 100%;
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    grid-template-rows: 1fr auto;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    align-items: center;
 
                     .slide {
                         margin-bottom: 88px;
                         grid-row: 2;
+                        width: 210px;
+                        height: 314px;
+
+                        &.active {
+                            width: 450px;
+                            height: 374px;
+                        }
 
                         &_content {
-                            width: 100%;
-                            max-width: 444px;
-                            margin: 0 auto;
+
                             color: @dark;
 
-                            .title {
+                            .slide_image {
                                 width: 100%;
-                                .fweight(500);
-                                .fsize(36px);
-                                line-height: 140%;
-                                margin-bottom: 55px;
+                                height: 100%;
+                                object-fit: cover;
                             }
 
-                            .description {
-                                margin-bottom: 40px;
-                                .fsize(18px);
-                            }
                         }
                     }
                 }
@@ -92,7 +82,7 @@
                             div {
                                 width: 12px;
                                 height: 12px;
-                                background: rgba(255, 255, 255, 0.6);
+                                background: #E9E9E9;
                                 border-radius: 2px;
                                 position: relative;
 

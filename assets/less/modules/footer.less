@@ -1,0 +1,92 @@
+// main: ../style.less
+
+.footer {
+    background-color: @darkBlue;
+
+    &_container {
+        padding: 50px 20px;
+
+
+        .content {
+            position: relative;
+
+            &::before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: rgba(@white, .3);
+                position: absolute;
+                top: 35px;
+            }
+
+            .footer_nav_container {
+                display: flex;
+                flex-flow: row nowrap;
+                position: relative;
+
+
+                .footer_nav {
+                    margin-right: 87px;
+                    color: @white;
+
+                    .nav_title {
+                        text-transform: uppercase;
+                        .fweight(300);
+                        margin-bottom: 34px;
+                    }
+
+                    ul {
+                        list-style: none;
+
+                        li {
+                            a {
+                                color: @white;
+                                margin-bottom: 10px;
+                                border: none;
+                                .fweight(300);
+                                line-height: 16px;
+
+                                &:hover {
+                                    opacity: 0.7;
+                                }
+                            }
+                        }
+                    }
+
+                    &.main {
+                        display: grid;
+                        grid-template-columns: auto auto;
+                        grid-template-rows: 0.7fr auto;
+                        column-gap: 115px;
+
+                        ul {
+                            grid-row: 2;
+
+                            grid-column: 1;
+
+                            &:last-of-type {
+                                grid-column: 2;
+                                grid-row: 2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .copyright {
+        padding: 15px 0;
+        background-color: rgba(@black, .9);
+
+        &_container {
+            .content {
+                color: rgba(@white, .4);
+                .fweight(300);
+            }
+        }
+    }
+}
+
+//border: 1px solid #B1B1B1;

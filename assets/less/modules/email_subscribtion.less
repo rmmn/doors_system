@@ -1,0 +1,82 @@
+// main: ../style.less
+
+.email_subscribtion {
+    &_container {
+
+        .content {
+            padding: 70px 100px;
+            background: transparent url("../../img/e_subscribe_bg.png") no-repeat center;
+            background-size: cover;
+            border-radius: 5px;
+
+            .subscribe {
+                max-width: 517px;
+
+                .title {
+                    max-width: 467px;
+                    .fsize(30px);
+                    line-height: 150%;
+                    text-transform: uppercase;
+                    .fweight(300);
+                    margin-bottom: 50px;
+                    line-height: 45px;
+                }
+
+                .subscribe_form {
+                    .form_content {
+                        .input_form {
+                            margin-bottom: 18px;
+
+                            input[type="email"] {
+                                padding: 14px 20px;
+                                .fsize(14px);
+                                background: transparent;
+                                outline: none;
+                                border: 1px solid #B1B1B1;
+                                border-radius: 2px;
+                                margin-right: 30px;
+                            }
+
+                            button {
+                                padding: 14px 20px;
+                                .fsize(14px);
+                            }
+                        }
+
+                        .footer {
+                            input[type="checkbox"] {
+                                display: none;
+
+                                &+label {
+                                    display: inline-flex;
+                                    align-items: center;
+
+                                    &::before {
+                                        content: '';
+                                        display: inline-flex;
+                                        width: 21px;
+                                        height: 21px;
+                                        background: @white;
+                                        border-radius: 2px;
+                                        margin-right: 12px;
+                                    }
+                                }
+
+                                &:checked {
+                                    &+label {
+                                        &::before {
+                                            background: @white url("../../img/checkbox.svg") no-repeat center;
+                                            background-size: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//border: 1px solid #B1B1B1;

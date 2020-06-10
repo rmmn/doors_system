@@ -1,0 +1,53 @@
+// main: ../style.less
+
+.advantages {
+    &_container {
+
+        .content {
+            .advantages_grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                justify-content: center;
+                margin-top: 60px;
+
+                .row {
+                    align-self: center;
+
+                    .advantages_image_left {
+                        width: 569px;
+                        height: 422px;
+                        object-fit: cover;
+                    }
+
+                    .adantages_pluses {
+                        columns: 2;
+                        column-gap: 95px;
+                        row-gap: 95px;
+
+                        .adantages_plus {
+                            width: 266px;
+                            margin-right: 11%;
+                            margin-bottom: 10%;
+
+                            .advantage_content {
+                                .title {
+                                    .fweight(normal);
+                                    .fsize(20px);
+                                    text-transform: uppercase;
+                                    margin-bottom: 15px;
+                                    margin-top: 24px;
+                                }
+
+                                .description {
+                                    color: @lightBlack;
+                                    .fsize(16px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

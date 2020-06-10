@@ -15,6 +15,18 @@ body {
 }
 
 a {
+    color: @lightBlue;
+    text-decoration: none;
+    border-bottom: 1px solid @lightBlue;
+
+    &:hover {
+        color: rgb(31, 109, 235);
+        border-bottom-color: transparent;
+    }
+}
+
+a,
+button {
     transition: all linear .3s;
 
     &.button {

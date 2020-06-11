@@ -132,3 +132,71 @@
         }
     }
 }
+
+@media (max-width: 1463px) {
+    .ins_doors {
+        &_container {
+            .content {
+                .slider {
+                    .slides {
+                        justify-content: space-around;
+
+                        .slide {
+                            &:first-of-type {
+                                display: none;
+                            }
+
+                            &:last-of-type {
+                                display: none;
+                            }
+
+                            &.active {
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1050px) {
+    .ins_doors {
+        &_container {
+            .content {
+                .slider {
+                    .slides {
+                        justify-content: center;
+
+                        .slide {
+                            display: none;
+
+                            &.active {
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1050px) {
+    .ins_doors {
+        &_container {
+            .content {
+                .slider {
+                    .slides {
+                        .slide {
+                            &.active {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

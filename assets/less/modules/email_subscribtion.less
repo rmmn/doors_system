@@ -2,7 +2,6 @@
 
 .email_subscribtion {
     &_container {
-
         .content {
             padding: 70px 100px;
             background: transparent url("../../img/e_subscribe_bg.png") no-repeat center;
@@ -81,4 +80,22 @@
     }
 }
 
-//border: 1px solid #B1B1B1;
+@media (max-width: 573px) {
+    .email_subscribtion {
+        &_container {
+            .content {
+                .subscribe {
+                    .subscribe_form {
+                        .form_content {
+                            .input_form {
+                                input[type="email"] {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

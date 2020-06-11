@@ -129,3 +129,33 @@
         }
     }
 }
+
+@media (max-width: 1463px) {
+    .recommendations {
+        &_container {
+            .content {
+
+                .recommendations_items {
+                    grid-template-columns: repeat(2, auto);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1050px) {
+    .recommendations {
+        &_container {
+            .content {
+
+                .recommendations_items {
+                    grid-template-columns: repeat(1, 100%);
+
+                    .recommendation {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

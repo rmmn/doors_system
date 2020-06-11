@@ -1,0 +1,131 @@
+// main: ../style.less
+
+.recommendations {
+    &_container {
+        .content {
+
+            .recommendations_items {
+                display: grid;
+                grid-template-columns: repeat(3, auto);
+                column-gap: 30px;
+                row-gap: 30px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 60px;
+
+                .recommendation {
+                    width: 450px;
+                    min-height: 350px;
+                    border: 1px solid #EFEFEF;
+                    position: relative;
+                    display: grid;
+                    grid-template-columns: 209px auto;
+                    grid-template-rows: minmax(350px, auto);
+                    transition: all linear .4s;
+
+                    &:hover {
+                        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .badges {
+                        position: absolute;
+                        top: 9px;
+                        left: 10px;
+                        right: 10px;
+
+                        .badge {
+                            padding: 5px 15px;
+                            .fsize(12px);
+                            line-height: 15px;
+                            text-transform: uppercase;
+                            color: @white;
+                            border-radius: 50px;
+                            display: inline-block;
+                            margin-right: 29px;
+
+                            &:last-of-type {
+                                margin-right: 0;
+                            }
+
+                            &.newest {
+                                background-color: @yellow;
+                            }
+
+                            &.hit {
+                                background-color: @red;
+                            }
+                        }
+                    }
+
+                    .image {
+                        grid-column: 1;
+                        grid-row: 1;
+                        height: 100%;
+                        width: 209px;
+
+                        img {
+                            width: inherit;
+                            height: inherit;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .content {
+                        grid-column: 2;
+                        grid-row: 1;
+                        padding: 45px 20px;
+
+                        .title {
+                            margin-bottom: 46px;
+                            line-height: 20px;
+                            .fsize(16px);
+                            .fweight(normal);
+                        }
+
+                        .description {
+                            color: @lightBlack;
+                            margin-bottom: 44px;
+                        }
+
+                        .price {
+                            .fsize(22px);
+                            .fweight(300);
+                            line-height: 20px;
+
+                            &::after {
+                                content: ' руб.';
+                            }
+
+                            .discount {
+                                .fsize(16px);
+                                .fweight(300);
+                                display: block;
+                                margin-bottom: 5px;
+                                text-decoration: line-through;
+                                color: @lightBlack;
+
+                                &::after {
+                                    content: ' руб.';
+                                }
+                            }
+                        }
+                    }
+
+
+                    .card {
+                        position: absolute;
+                        right: 24px;
+                        bottom: 24px;
+                        width: 42px;
+                        height: 42px;
+                        border-radius: 100px;
+                        padding: 0;
+                        background: @lightBlue url("../../img/card.svg") no-repeat center center;
+                        background-size: 19px;
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}

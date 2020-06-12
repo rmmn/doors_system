@@ -51,15 +51,15 @@
                             background-position: center;
                             padding: 15px 14px;
 
-                            &.search {
+                            &.search_link {
                                 background-image: url("../../img/search.svg");
                             }
 
-                            &.account {
+                            &.account_link {
                                 background-image: url("../../img/account.svg");
                             }
 
-                            &.basket {
+                            &.basket_link {
                                 width: auto;
                                 display: flex;
                                 align-items: center;
@@ -84,7 +84,6 @@
             }
 
             ul {
-                width: 100%;
                 list-style: none;
                 display: flex;
                 flex-flow: row wrap;
@@ -92,6 +91,125 @@
                 justify-content: center;
 
                 li {
+
+                    &.dropdown {
+                        position: relative;
+                        width: auto;
+
+                        .nav_link {
+                            &.dropdown {
+                                padding-left: 28px;
+
+                                &::before {
+                                    content: '';
+                                    height: 7px;
+                                    width: 14px;
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    background: transparent url("../../img/arrow_down.svg") no-repeat center;
+                                    background-size: cover;
+                                    left: 10px;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            .dropdown_menu {
+                                display: block;
+                            }
+                        }
+
+                        .dropdown_menu {
+                            position: absolute;
+                            width: 310px;
+                            display: none;
+                            left: 50%;
+                            transform: translateX(-50%);
+
+                            ul {
+                                clear: both;
+                                padding: 30px;
+                                padding-left: 40px;
+                                background-color: @white;
+                                box-shadow: 0px 2px 15px rgba(@black, 0.25);
+                                border-radius: 0px 0px 2px 2px;
+                                flex-flow: column nowrap;
+                                align-items: flex-start;
+                                margin-top: 35px;
+
+                                li {
+                                    &.child_dropdown {
+                                        .nav_link {
+                                            padding-left: 0;
+
+                                            // &.dropdown {
+                                            //     &::before {
+                                            //         content: '';
+                                            //         height: 14px;
+                                            //         width: 7px;
+                                            //         background: transparent url("../../img/arrow_right.svg") no-repeat center;
+                                            //         background-size: cover;
+                                            //     }
+                                            // }
+                                        }
+
+                                        &:hover {
+                                            .child_dropdown_menu {
+                                                display: block;
+                                            }
+                                        }
+
+                                        .child_dropdown_menu {
+                                            display: none;
+
+                                            ul {
+                                                box-shadow: 0 0 0 transparent;
+                                                width: auto;
+                                                background-color: transparent;
+                                                margin-top: 15px;
+                                            }
+                                        }
+                                    }
+
+                                    a {
+                                        color: @black;
+                                        display: inline-block;
+                                        word-break: keep-all;
+                                        padding: 0;
+                                        border-radius: 0;
+                                        border-bottom: 1px solid transparent;
+                                        position: relative;
+
+                                        &:hover {
+                                            background-color: transparent;
+                                            border-color: @lightBlack;
+                                        }
+
+                                        &.dropdown {
+                                            padding-left: 0;
+
+                                            &::before {
+                                                content: '';
+                                                height: 14px;
+                                                width: 7px;
+                                                left: -20px;
+                                                background-image: url("../../img/arrow_right.svg");
+                                            }
+                                        }
+                                    }
+
+                                    margin: 0;
+                                    margin-bottom: 30px;
+
+                                    &:last-of-type {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     &:last-of-type {
                         margin-right: 0;
                     }
@@ -216,6 +334,113 @@
                         li {
                             margin-right: 24px;
                             margin-bottom: 24px;
+
+                            &.dropdown {
+                                display: flex;
+                                flex-flow: column;
+                                align-items: center;
+
+                                .nav_link {
+                                    &.dropdown {
+                                        position: relative;
+
+                                        &::before {
+                                            content: '';
+                                            height: 7px;
+                                            width: 14px;
+                                            position: absolute;
+                                            top: 50%;
+                                            transform: translateY(-50%);
+                                            background: transparent url("../../img/arrow_down.svg") no-repeat center;
+                                            background-size: cover;
+                                            left: 10px;
+                                        }
+                                    }
+                                }
+
+                                &:hover {
+                                    .dropdown_menu {
+                                        display: flex;
+                                    }
+                                }
+
+                                .dropdown_menu {
+                                    position: relative;
+                                    width: auto;
+                                    display: none;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+
+                                    ul {
+                                        clear: both;
+                                        padding: 30px;
+                                        padding-left: 40px;
+                                        background-color: @white;
+                                        box-shadow: 0px 2px 15px rgba(@black, 0.25);
+                                        border-radius: 0px 0px 2px 2px;
+                                        flex-flow: column nowrap;
+                                        align-items: flex-start;
+                                        margin-top: 35px;
+
+                                        li {
+                                            &.child_dropdown {
+                                                .nav_link {}
+
+                                                &:hover {
+                                                    .child_dropdown_menu {
+                                                        display: block;
+                                                    }
+                                                }
+
+                                                .child_dropdown_menu {
+                                                    display: none;
+
+                                                    ul {
+                                                        box-shadow: 0 0 0 transparent;
+                                                        width: auto;
+                                                        background-color: transparent;
+                                                        margin-top: 15px;
+                                                    }
+                                                }
+                                            }
+
+                                            a {
+                                                color: @black;
+                                                display: inline-flex;
+                                                word-break: keep-all;
+                                                padding: 0;
+                                                border-radius: 0;
+                                                border-bottom: 1px solid transparent;
+                                                position: relative;
+
+                                                &:hover {
+                                                    background-color: transparent;
+                                                    border-color: @lightBlack;
+                                                }
+
+                                                &.dropdown {
+                                                    //padding-left: 0;
+
+                                                    &::before {
+                                                        content: '';
+                                                        height: 14px;
+                                                        width: 7px;
+                                                        left: -20px;
+                                                        background-image: url("../../img/arrow_right.svg");
+                                                    }
+                                                }
+                                            }
+
+                                            margin: 0;
+                                            margin-bottom: 30px;
+
+                                            &:last-of-type {
+                                                margin-bottom: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
 

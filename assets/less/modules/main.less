@@ -46,6 +46,23 @@ button {
             border-color: rgb(31, 109, 235);
         }
 
+        &.inverted {
+            background: @white;
+            border: 2px solid @white;
+            box-shadow: 0px 0 0 rgba(0, 0, 0, 0.0);
+            border-radius: 2px;
+            color: @lightBlue;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 12px 30px;
+            display: inline-block;
+
+            &:hover {
+                background: rgba(255, 255, 255, .7);
+                border-color: rgba(255, 255, 255, .7);
+            }
+        }
+
         &.text {
             color: @white;
             text-decoration: none;

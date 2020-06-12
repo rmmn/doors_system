@@ -49,18 +49,18 @@
                                 display: none;
 
                                 &+label {
-                                    display: inline-flex;
-                                    align-items: center;
                                     color: @lightBlack;
+                                    display: grid;
+                                    grid-template-columns: 21px auto;
+                                    column-gap: 12px;
 
                                     &::before {
                                         content: '';
-                                        display: inline-flex;
+                                        display: inline-block;
                                         width: 21px;
                                         height: 21px;
                                         background: @white;
                                         border-radius: 2px;
-                                        margin-right: 12px;
                                     }
                                 }
 
@@ -81,10 +81,37 @@
     }
 }
 
+@media (max-width: 760px) {
+    .email_subscribtion {
+        &_container {
+            .content {
+                .subscribe {
+                    .subscribe_form {
+                        .form_content {
+                            .input_form {
+                                input[type="email"] {
+                                    width: 100%;
+                                }
+
+                                button {
+                                    width: 100%;
+                                    margin-top: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 573px) {
     .email_subscribtion {
         &_container {
             .content {
+                padding: 70px 50px;
+
                 .subscribe {
                     .subscribe_form {
                         .form_content {

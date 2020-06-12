@@ -174,3 +174,29 @@
         }
     }
 }
+
+@media (max-width: 450px) {
+    .recommendations {
+        &_container {
+            .content {
+                .recommendations_items {
+                    grid-template-columns: repeat(1, 100%);
+
+                    .recommendation {
+                        grid-template-columns: auto;
+
+                        .image {
+                            width: 100%;
+                            height: 350px;
+                        }
+
+                        .content {
+                            grid-column: 1;
+                            grid-row: 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

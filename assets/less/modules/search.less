@@ -99,3 +99,39 @@
         }
     }
 }
+
+@media (max-width: 688px) {
+    .search {
+        &_container {
+            .content {
+                .search_form {
+                    .form_content {
+                        .input_form {
+                            &::before {
+                                top: 20px;
+                            }
+
+                            input[type="search"] {
+                                width: 100%;
+                                margin-bottom: 30px;
+                            }
+
+                            button {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .search {
+        &_container {
+            padding: 75px 30px;
+            padding-top: 106px;
+        }
+    }
+}

@@ -21,6 +21,12 @@
         ToggleSearch(0, 300);
     });
 
+    search.addEventListener("click", function (e) {
+        if (e.target.classList.contains("search")) {
+            ToggleSearch(0, 300);
+        }
+    });
+
     function ToggleSearch(delay = 0, duration = 300) {
         if (!search.classList.contains("active")) {
 

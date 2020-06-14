@@ -6,6 +6,10 @@
     background-size: cover;
     padding-top: 90px;
 
+    &.small {
+        height: 260px;
+    }
+
     &_container {
         height: 100%;
 
@@ -14,6 +18,13 @@
             max-width: 570px;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
+
+            &.fullwidth {
+                backdrop-filter: blur(0);
+                background-color: transparent;
+                max-width: 100%;
+                width: 100%;
+            }
 
             .slider {
                 height: 100%;

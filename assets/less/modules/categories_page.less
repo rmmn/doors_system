@@ -158,6 +158,8 @@
                 }
 
                 .price_filters {
+                    margin-bottom: 62px;
+
                     .range_slider {
                         position: relative;
                         background-color: #b1b1b1;
@@ -226,6 +228,40 @@
                                 }
                             }
                         }
+                    }
+                }
+
+                .color_filters,
+                .material_filters,
+                .vendor_filters,
+                .collections_filters,
+                .styles_filters {
+                    margin-bottom: 62px;
+
+                    .colors_list,
+                    .material_list,
+                    .vendor_list,
+                    .collections_list,
+                    .styles_list {
+                        margin-bottom: 16px;
+
+                        .checkbox {
+                            margin-bottom: 11px;
+
+                            &:last-of-type {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+
+                .clear_filters {
+                    color: @lightBlack;
+                    border-color: @lightBlack;
+
+                    &:hover {
+                        opacity: 0.9;
+                        border-bottom-color: transparent;
                     }
                 }
             }
@@ -360,6 +396,52 @@
                         }
                     }
                 }
+
+                .pagination {
+                    width: 100%;
+                    border-top: 2px solid @gray;
+                    margin-top: 60px;
+                    padding-top: 41px;
+                    display: flex;
+                    justify-content: center;
+
+                    .pagination_nav {
+                        ul {
+                            display: flex;
+                            flex-flow: row wrap;
+                            list-style: none;
+
+                            li {
+                                margin-right: 11px;
+
+                                &:last-of-type {
+                                    margin-right: 0;
+                                }
+
+                                a {
+                                    display: block;
+                                    width: 20px;
+                                    height: 20px;
+                                    text-align: center;
+                                    line-height: 19px;
+                                    .fsize(16px);
+                                    border: none;
+                                    border-radius: 2px;
+
+                                    &.active {
+                                        background-color: @lightBlue;
+                                        color: @white;
+                                    }
+
+                                    &:hover {
+                                        background-color: rgba(@lightBlue, .7);
+                                        color: @white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -468,6 +550,26 @@
                 .categories_page_content {
                     grid-column: 1;
                     grid-row: 2;
+
+                    .pagination {
+                        .pagination_nav {
+                            ul {
+                                li {
+                                    margin-right: 14px;
+
+                                    &:last-of-type {
+                                        margin-right: 0;
+                                    }
+
+                                    a {
+                                        width: 40px;
+                                        height: 40px;
+                                        line-height: 39px;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
             }
@@ -491,6 +593,25 @@
                 .categories_page_content {
                     grid-column: 1;
                     grid-row: 2;
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .categories_page {
+        &_container {
+            .content {
+                .filter {
+                    .price_filters {
+                        .price_inputs {
+                            width: 100%;
+                            justify-content: space-between;
+                            margin: 0 auto;
+                        }
+                    }
                 }
 
             }

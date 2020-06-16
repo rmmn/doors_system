@@ -5,7 +5,31 @@
         search = document.querySelector(".search"),
         searchClose = document.querySelector(".search>.search_container>.close_search"),
         filterTitle = document.querySelectorAll(".category_filters>.category_filter_title"),
-        toggleFilter = document.querySelector(".toggle_filter");
+        toggleFilter = document.querySelector(".toggle_filter"),
+        clearFilters = document.querySelector(".clear_filters");
+
+    let filters = {
+        checkboxes: [
+            document.querySelectorAll(".colors_list>.checkbox>input"),
+            document.querySelectorAll(".material_list>.checkbox>input"),
+            document.querySelectorAll(".vendor_list>.checkbox>input"),
+            document.querySelectorAll(".collections_list>.checkbox>input"),
+            document.querySelectorAll(".styles_list>.checkbox>input"),
+        ]
+    };
+
+    class FilterModel {
+
+        constructor() { }
+
+        model = {}
+
+        getModel() {
+            return this.model;
+        }
+    }
+
+    let fModel = new FilterModel();
 
     menuButton.addEventListener("click", function (e) {
         e.preventDefault();
@@ -41,6 +65,34 @@
         }, false);
     });
 
+    filters.checkboxes.forEach(function (checkbox) {
+        checkbox.forEach(function (chk) {
+            chk.addEventListener("change", function (e) {
+                fModel.model[chk.id] = chk.checked;
+
+                sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
+            });
+        })
+    });
+
+    clearFilters.addEventListener("click", function (e) {
+        e.preventDefault();
+        filters.checkboxes.forEach(function (checkbox) {
+            checkbox.forEach(function (chk) {
+                if (chk.checked) {
+                    chk.checked = !chk.checked;
+                }
+            })
+        });
+
+        $(".range_slider").slider("values", [400, 17000]);
+        $('#priceMinValue').val($(".range_slider").slider("values", 0));
+        $('#priceMaxValue').val($(".range_slider").slider("values", 1));
+
+        fModel.model = {};
+        sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
+    });
+
     $(".range_slider").slider({
         range: true,
         animate: 100,
@@ -50,29 +102,28 @@
         values: [400, 17000],
         slide: function (event, ui) {
             $('#priceMinValue').val(ui.values[0]);
-
             $('#priceMaxValue').val(ui.values[1]);
+
+            fModel.model["price"] = { min: ui.values[0], max: ui.values[1] }
+            sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
         }
     });
 
     $('#priceMinValue').val($(".range_slider").slider("values", 0));
-
-
     $('#priceMaxValue').val($(".range_slider").slider("values", 1));
 
-
     $('#priceMinValue').keyup(function () {
-        $(".range_slider").slider("values",
-            [$(this).val(),
-            $('#priceMaxValue').val()]
-        );
+        $(".range_slider").slider("values", [$(this).val(), $('#priceMaxValue').val()]);
+
+        fModel.model["price"] = { min: $(this).val(), max: $('#priceMaxValue').val() }
+        sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
     });
 
     $('#priceMaxValue').keyup(function () {
-        $(".range_slider").slider("values",
-            [$('#priceMinValue').val(),
-            $(this).val()]
-        );
+        $(".range_slider").slider("values", [$('#priceMinValue').val(), $(this).val()]);
+
+        fModel.model["price"] = { min: $('#priceMinValue').val(), max: $(this).val() }
+        sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
     });
 
     function ToggleSearch(delay = 0, duration = 300) {

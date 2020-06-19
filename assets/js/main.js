@@ -6,7 +6,10 @@
         searchClose = document.querySelector(".search>.search_container>.close_search"),
         filterTitle = document.querySelectorAll(".category_filters>.category_filter_title"),
         toggleFilter = document.querySelector(".toggle_filter"),
-        clearFilters = document.querySelector(".clear_filters");
+        clearFilters = document.querySelector(".clear_filters"),
+        consultationButton = document.querySelector(".get_consultation"),
+        consultation = document.querySelector(".consultation_modal"),
+        consultationClose = document.querySelector(".consultation_modal>.consultation_modal_container>.close_consultation_modal");
 
     let filters = {
         checkboxes: [
@@ -17,6 +20,65 @@
             document.querySelectorAll(".styles_list>.checkbox>input"),
         ]
     };
+
+    let accordeon = document.querySelector('.accordeon');
+
+    accordeon.querySelectorAll(".accordeon_item>.accordeon_item_title").forEach(function (e) {
+        e.addEventListener("click", function (e) {
+            e.currentTarget.parentNode.classList.toggle("active");
+        })
+    })
+
+    let photoviewer = {
+        controls: {
+            left: document.querySelector(".photo_view>.current>.controls>.left"),
+            right: document.querySelector(".photo_view>.current>.controls>.right")
+        },
+        current: document.querySelector(".photo_view>.current>.current_image"),
+        previews: document.querySelectorAll(".photo_view>.previews>.preview_list>ul>li")
+    }
+
+    let pcsInput = {
+        down: document.querySelector(".pcs>.pcs_down"),
+        up: document.querySelector(".pcs>.pcs_up"),
+        number: document.querySelector(".pcs>.pcs_input")
+    };
+
+    pcsInput.down.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (pcsInput.number.value != "" && parseInt(pcsInput.number.value) > 1) {
+            pcsInput.number.value = pcsInput.number.value - 1;
+        }
+    });
+
+    pcsInput.up.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (pcsInput.number.value != "") {
+            pcsInput.number.value = parseInt(pcsInput.number.value) + 1;
+        }
+    });
+
+    let i = 0;
+    photoviewer.controls.left.addEventListener("click", function (e) {
+        e.preventDefault();
+        photoviewer.previews.forEach(function (li, i, arr) {
+            console.log(i);
+            console.log(arr.length);
+            if (li.classList.contains("active")) {
+                photoviewer.current.setAttribute("src", li.nextElementSibling.querySelector("a>img").getAttribute("src"))
+                li.classList.remove("active")
+                li.nextElementSibling.classList.add("active")
+            }
+        })
+
+
+        // if (photoviewer.previews[i].classList.contains("active")) {
+        //     photoviewer.current.setAttribute("src", photoviewer.previews[i].nextElementSibling.querySelector("a>img").getAttribute("src"));
+        //     photoviewer.previews[i].nextElementSibling.classList.add("active")
+        //     photoviewer.previews[i].classList.remove("active")
+        // }
+        // i + 1;
+    });
 
     class FilterModel {
 
@@ -39,17 +101,33 @@
 
     searchButton.addEventListener("click", function (e) {
         e.preventDefault();
-        ToggleSearch(0, 300);
+        Toggle(search, 0, 300);
     });
 
     searchClose.addEventListener("click", function (e) {
         e.preventDefault();
-        ToggleSearch(0, 300);
+        Toggle(search, 0, 300);
     });
 
     search.addEventListener("click", function (e) {
         if (e.target.classList.contains("search")) {
-            ToggleSearch(0, 300);
+            Toggle(search, 0, 300);
+        }
+    });
+
+    consultationButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        Toggle(consultation, 0, 300);
+    });
+
+    consultationClose.addEventListener("click", function (e) {
+        e.preventDefault();
+        Toggle(consultation, 0, 300);
+    });
+
+    consultation.addEventListener("click", function (e) {
+        if (e.target.classList.contains("consultation_modal")) {
+            Toggle(consultation, 0, 300);
         }
     });
 
@@ -126,11 +204,11 @@
         sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
     });
 
-    function ToggleSearch(delay = 0, duration = 300) {
-        if (!search.classList.contains("active")) {
+    function Toggle(el, delay = 0, duration = 300) {
+        if (!el.classList.contains("active")) {
 
-            search.style.display = "block";
-            search.animate(
+            el.style.display = "block";
+            el.animate(
                 [
                     { opacity: 0 },
                     { opacity: 1 }
@@ -139,11 +217,11 @@
                 duration: duration
             }
             ).onfinish = function () {
-                search.style.opacity = 1;
-                search.classList.add("active");
+                el.style.opacity = 1;
+                el.classList.add("active");
             };
         } else {
-            search.animate(
+            el.animate(
                 [
                     { opacity: 1 },
                     { opacity: 0 }
@@ -152,9 +230,9 @@
                 duration: duration
             }
             ).onfinish = function () {
-                search.style.opacity = 0;
-                search.style.display = "none";
-                search.classList.remove("active");
+                el.style.opacity = 0;
+                el.style.display = "none";
+                el.classList.remove("active");
             };
         }
     }

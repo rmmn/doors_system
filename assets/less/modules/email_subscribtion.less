@@ -16,7 +16,7 @@
                     .montserrat();
                     line-height: 150%;
                     text-transform: uppercase;
-                    .fweight(300);
+                    .fweight(500);
                     margin-bottom: 50px;
                     line-height: 45px;
                 }
@@ -41,37 +41,6 @@
                                 width: 210px;
                                 padding: 14px 20px;
                                 .fsize(14px);
-                            }
-                        }
-
-                        .form_footer {
-                            input[type="checkbox"] {
-                                display: none;
-
-                                &+label {
-                                    color: @lightBlack;
-                                    display: grid;
-                                    grid-template-columns: 21px auto;
-                                    column-gap: 12px;
-
-                                    &::before {
-                                        content: '';
-                                        display: inline-block;
-                                        width: 21px;
-                                        height: 21px;
-                                        background: @white;
-                                        border-radius: 2px;
-                                    }
-                                }
-
-                                &:checked {
-                                    &+label {
-                                        &::before {
-                                            background: @white url("../../img/checkbox.svg") no-repeat center;
-                                            background-size: 10px;
-                                        }
-                                    }
-                                }
                             }
                         }
                     }

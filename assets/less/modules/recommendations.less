@@ -87,11 +87,16 @@
                         .description {
                             color: @lightBlack;
                             margin-bottom: 44px;
+                            padding-bottom: 0;
+
+                            p {
+                                padding-bottom: 0;
+                            }
                         }
 
                         .price {
                             .fsize(22px);
-                            .fweight(300);
+                            .fweight(normal);
                             line-height: 20px;
 
                             &::after {
@@ -100,7 +105,7 @@
 
                             .discount {
                                 .fsize(16px);
-                                .fweight(300);
+                                .fweight(normal);
                                 display: block;
                                 margin-bottom: 5px;
                                 text-decoration: line-through;
@@ -135,10 +140,10 @@
                 text-align: center;
 
                 .gototcatalog {
-
                     color: @black;
                     border-color: @lightBlack;
                     text-align: center;
+
                 }
             }
         }

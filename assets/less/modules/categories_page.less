@@ -267,6 +267,46 @@
             }
 
             .categories_page_content {
+
+                .grid {
+                    margin-bottom: 66px;
+                    grid-template-columns: 327px auto;
+                    align-items: start;
+                    column-gap: 90px;
+
+                    &.best {
+                        padding: 27px 29px;
+                        border: 1px solid #D7E0EE;
+                    }
+
+                    .row {
+                        .best_content {
+                            align-self: center;
+
+                            .title {
+                                .montserrat();
+                                .fsize(18px);
+                                .fweight(500);
+                                text-transform: uppercase;
+                                line-height: 27px;
+                                padding-bottom: 20px;
+                                margin-top: 30px;
+                            }
+
+                            p {
+                                line-height: 21px;
+                                .fsize(14px);
+                            }
+                        }
+
+                        .right_image {
+                            width: 100%;
+                            height: 376px;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
                 .recommendations_items {
                     display: grid;
                     grid-template-columns: repeat(3, auto);
@@ -339,10 +379,9 @@
                             padding: 45px 20px;
 
                             .title {
-                                .montserrat();
-                                max-width: 220px;
+                                .montserrat();max-width: 220px;
                                 margin-bottom: 10px;
-                                line-height: 20px;
+                                line-height: 26px;
                                 .fsize(16px);
                                 .fweight(normal);
                                 text-transform: uppercase;
@@ -359,7 +398,7 @@
 
                             .price {
                                 .fsize(22px);
-                                .fweight(300);
+                                .fweight(normal);
                                 line-height: 20px;
 
                                 &::after {
@@ -368,7 +407,7 @@
 
                                 .discount {
                                     .fsize(16px);
-                                    .fweight(300);
+                                    .fweight(normal);
                                     display: block;
                                     margin-bottom: 5px;
                                     text-decoration: line-through;
@@ -447,13 +486,96 @@
     }
 }
 
+.seo {
+
+
+    &.gray {
+        background-color: @lightGray;
+    }
+
+    margin-bottom: 135px;
+
+    &_container {
+        padding: 99px 30px !important;
+
+        .content {
+
+
+            .grid {
+                margin-top: 60px;
+                margin-bottom: 66px;
+                grid-template-columns: 690px auto;
+                align-items: start;
+                column-gap: 120px;
+
+                &.best {
+                    padding: 27px 29px;
+                    border: 1px solid #D7E0EE;
+                }
+
+                .row {
+                    p {
+                        padding-bottom: 20px;
+                        line-height: 24px;
+                        .fsize(16px);
+
+
+                    }
+
+                    .right_image {
+                        width: 100%;
+                        height: 384px;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 1463px) {
     .categories_page {
         &_container {
             .content {
                 .categories_page_content {
+                    .grid {
+                        grid-template-columns: auto;
+                        row-gap: 90px;
+
+                        .row {
+                            &.left {
+                                grid-row: 2;
+                            }
+
+                            &.right {
+                                grid-row: 1;
+                            }
+                        }
+                    }
+
                     .recommendations_items {
                         grid-template-columns: repeat(2, auto);
+                    }
+                }
+            }
+        }
+    }
+
+    .seo {
+        &_container {
+            .content {
+                .grid {
+                    row-gap: 90px;
+                    grid-template-columns: auto;
+
+                    .row {
+                        &.left {
+                            grid-row: 2;
+                        }
+
+                        &.right {
+                            grid-row: 1;
+                        }
                     }
                 }
             }
@@ -550,6 +672,10 @@
                 .categories_page_content {
                     grid-column: 1;
                     grid-row: 2;
+
+                    .grid {
+                        margin-top: 60px;
+                    }
 
                     .pagination {
                         .pagination_nav {

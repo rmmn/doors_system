@@ -23,20 +23,59 @@
 
     let accordeon = document.querySelector('.accordeon');
 
-    accordeon.querySelectorAll(".accordeon_item>.accordeon_item_title").forEach(function (e) {
-        e.addEventListener("click", function (e) {
-            e.currentTarget.parentNode.classList.toggle("active");
+    if (accordeon != undefined) {
+        accordeon.querySelectorAll(".accordeon_item>.accordeon_item_title").forEach(function (e) {
+            e.addEventListener("click", function (e) {
+                e.currentTarget.parentNode.classList.toggle("active");
+            })
         })
-    })
-
-    let photoviewer = {
-        controls: {
-            left: document.querySelector(".photo_view>.current>.controls>.left"),
-            right: document.querySelector(".photo_view>.current>.controls>.right")
-        },
-        current: document.querySelector(".photo_view>.current>.current_image"),
-        previews: document.querySelectorAll(".photo_view>.previews>.preview_list>ul>li")
     }
+
+    $('.doors_slider').slick({
+        centerMode: true,
+        centerPadding: '0',
+        slidesToShow: 4,
+        slidesToScroll: 5,
+        dots: true,
+        infinite: false,
+        initialSlide: 2,
+        slidesPerRow: 5,
+        responsive: [
+            {
+                breakpoint: 1370,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 1155,
+                settings: {
+                    arrows: true,
+                    centerMode: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    variableWidth: true,
+                    mobileFirst: true
+                }
+            }
+        ],
+        arrows: true,
+        prevArrow: $('.doors_slider_prev'),
+        nextArrow: $('.doors_slider_next'),
+        dotsClass: "doors_slider_pages",
+        appendDots: $('.doors_slider_pages_container'),
+    });
+
+    $('#lightSlider').lightSlider({
+        gallery: true,
+        item: 1,
+        loop: false,
+        slideMargin: 0,
+        thumbItem: 9
+    });
 
     let pcsInput = {
         down: document.querySelector(".pcs>.pcs_down"),
@@ -44,41 +83,24 @@
         number: document.querySelector(".pcs>.pcs_input")
     };
 
-    pcsInput.down.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (pcsInput.number.value != "" && parseInt(pcsInput.number.value) > 1) {
-            pcsInput.number.value = pcsInput.number.value - 1;
-        }
-    });
+    if (pcsInput.down != undefined && pcsInput.up != undefined && pcsInput.number != undefined) {
+        pcsInput.down.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (pcsInput.number.value != "" && parseInt(pcsInput.number.value) > 1) {
+                pcsInput.number.value = pcsInput.number.value - 1;
+            }
+        });
 
-    pcsInput.up.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (pcsInput.number.value != "") {
-            pcsInput.number.value = parseInt(pcsInput.number.value) + 1;
-        }
-    });
+        pcsInput.up.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (pcsInput.number.value != "") {
+                pcsInput.number.value = parseInt(pcsInput.number.value) + 1;
+            }
+        });
+    }
 
     let i = 0;
-    photoviewer.controls.left.addEventListener("click", function (e) {
-        e.preventDefault();
-        photoviewer.previews.forEach(function (li, i, arr) {
-            console.log(i);
-            console.log(arr.length);
-            if (li.classList.contains("active")) {
-                photoviewer.current.setAttribute("src", li.nextElementSibling.querySelector("a>img").getAttribute("src"))
-                li.classList.remove("active")
-                li.nextElementSibling.classList.add("active")
-            }
-        })
 
-
-        // if (photoviewer.previews[i].classList.contains("active")) {
-        //     photoviewer.current.setAttribute("src", photoviewer.previews[i].nextElementSibling.querySelector("a>img").getAttribute("src"));
-        //     photoviewer.previews[i].nextElementSibling.classList.add("active")
-        //     photoviewer.previews[i].classList.remove("active")
-        // }
-        // i + 1;
-    });
 
     class FilterModel {
 
@@ -115,94 +137,98 @@
         }
     });
 
-    consultationButton.addEventListener("click", function (e) {
-        e.preventDefault();
-        Toggle(consultation, 0, 300);
-    });
-
-    consultationClose.addEventListener("click", function (e) {
-        e.preventDefault();
-        Toggle(consultation, 0, 300);
-    });
-
-    consultation.addEventListener("click", function (e) {
-        if (e.target.classList.contains("consultation_modal")) {
+    if (consultationButton != undefined && consultationClose != undefined && consultation != undefined) {
+        consultationButton.addEventListener("click", function (e) {
+            e.preventDefault();
             Toggle(consultation, 0, 300);
-        }
-    });
+        });
 
-    toggleFilter.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.currentTarget.nextElementSibling.classList.toggle("open");
-    });
+        consultationClose.addEventListener("click", function (e) {
+            e.preventDefault();
+            Toggle(consultation, 0, 300);
+        });
 
-    filterTitle.forEach(function (el) {
-        el.addEventListener("click", function (e) {
-            e.currentTarget.classList.toggle("active");
+        consultation.addEventListener("click", function (e) {
+            if (e.target.classList.contains("consultation_modal")) {
+                Toggle(consultation, 0, 300);
+            }
+        });
+    }
+
+    if (toggleFilter != undefined) {
+        toggleFilter.addEventListener("click", function (e) {
+            e.preventDefault();
             e.currentTarget.nextElementSibling.classList.toggle("open");
-        }, false);
-    });
+        });
 
-    filters.checkboxes.forEach(function (checkbox) {
-        checkbox.forEach(function (chk) {
-            chk.addEventListener("change", function (e) {
-                fModel.model[chk.id] = chk.checked;
+        filterTitle.forEach(function (el) {
+            el.addEventListener("click", function (e) {
+                e.currentTarget.classList.toggle("active");
+                e.currentTarget.nextElementSibling.classList.toggle("open");
+            }, false);
+        });
 
-                sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
-            });
-        })
-    });
-
-    clearFilters.addEventListener("click", function (e) {
-        e.preventDefault();
         filters.checkboxes.forEach(function (checkbox) {
             checkbox.forEach(function (chk) {
-                if (chk.checked) {
-                    chk.checked = !chk.checked;
-                }
+                chk.addEventListener("change", function (e) {
+                    fModel.model[chk.id] = chk.checked;
+
+                    sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
+                });
             })
         });
 
-        $(".range_slider").slider("values", [400, 17000]);
+        clearFilters.addEventListener("click", function (e) {
+            e.preventDefault();
+            filters.checkboxes.forEach(function (checkbox) {
+                checkbox.forEach(function (chk) {
+                    if (chk.checked) {
+                        chk.checked = !chk.checked;
+                    }
+                })
+            });
+
+            $(".range_slider").slider("values", [400, 17000]);
+            $('#priceMinValue').val($(".range_slider").slider("values", 0));
+            $('#priceMaxValue').val($(".range_slider").slider("values", 1));
+
+            fModel.model = {};
+            sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
+        });
+
+        $(".range_slider").slider({
+            range: true,
+            animate: 100,
+            min: 0,
+            max: 17000,
+            step: 1,
+            values: [400, 17000],
+            slide: function (event, ui) {
+                $('#priceMinValue').val(ui.values[0]);
+                $('#priceMaxValue').val(ui.values[1]);
+
+                fModel.model["price"] = { min: ui.values[0], max: ui.values[1] }
+                sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
+            }
+        });
+
         $('#priceMinValue').val($(".range_slider").slider("values", 0));
         $('#priceMaxValue').val($(".range_slider").slider("values", 1));
 
-        fModel.model = {};
-        sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
-    });
+        $('#priceMinValue').keyup(function () {
+            $(".range_slider").slider("values", [$(this).val(), $('#priceMaxValue').val()]);
 
-    $(".range_slider").slider({
-        range: true,
-        animate: 100,
-        min: 0,
-        max: 17000,
-        step: 1,
-        values: [400, 17000],
-        slide: function (event, ui) {
-            $('#priceMinValue').val(ui.values[0]);
-            $('#priceMaxValue').val(ui.values[1]);
-
-            fModel.model["price"] = { min: ui.values[0], max: ui.values[1] }
+            fModel.model["price"] = { min: $(this).val(), max: $('#priceMaxValue').val() }
             sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
-        }
-    });
+        });
 
-    $('#priceMinValue').val($(".range_slider").slider("values", 0));
-    $('#priceMaxValue').val($(".range_slider").slider("values", 1));
+        $('#priceMaxValue').keyup(function () {
+            $(".range_slider").slider("values", [$('#priceMinValue').val(), $(this).val()]);
 
-    $('#priceMinValue').keyup(function () {
-        $(".range_slider").slider("values", [$(this).val(), $('#priceMaxValue').val()]);
-
-        fModel.model["price"] = { min: $(this).val(), max: $('#priceMaxValue').val() }
-        sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
-    });
-
-    $('#priceMaxValue').keyup(function () {
-        $(".range_slider").slider("values", [$('#priceMinValue').val(), $(this).val()]);
-
-        fModel.model["price"] = { min: $('#priceMinValue').val(), max: $(this).val() }
-        sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
-    });
+            fModel.model["price"] = { min: $('#priceMinValue').val(), max: $(this).val() }
+            sessionStorage.setItem("fModel", JSON.stringify(fModel.getModel()));
+        });
+    }
 
     function Toggle(el, delay = 0, duration = 300) {
         if (!el.classList.contains("active")) {

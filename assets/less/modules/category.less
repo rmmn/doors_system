@@ -527,10 +527,12 @@
                     grid-template-columns: 100%;
                     justify-content: center;
                     column-gap: 0;
+                    row-gap: 40px;
+                    justify-items: center;
 
                     .photo {
                         .photo_view {
-                            width: 100%;
+                            justify-self: center;
                         }
                     }
 
@@ -557,6 +559,18 @@
                     grid-template-columns: auto;
                     margin-top: 70px;
                     column-gap: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 760px) {
+    .category {
+        &_container {
+            .content {
+                .overview {
+                    justify-items: stretch;
                 }
             }
         }

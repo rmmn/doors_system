@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Двери Система</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="assets/css/style.min.css" />
 </head>
 
@@ -485,30 +486,46 @@
                         как эти чудесные весенние утра,
                         которыми я наслаждаюсь</p>
                 </div>
-                <div class="slider">
-                    <div class="slides">
+
+                <div class="doors_slider_container">
+                    <div class="slides doors_slider">
                         <div class="slide">
-                            <div class="slide_content"><img class="slide_image" src="assets/img/ins_door-1.png" alt="">
+                            <div class="slide_content">
+                                <img class="slide_image" src="assets/img/ins_door-1.png" alt="">
                             </div>
                         </div>
                         <div class="slide">
-                            <div class="slide_content"><img class="slide_image" src="assets/img/ins_door-2.png" alt="">
+                            <div class="slide_content">
+                                <img class="slide_image" src="assets/img/ins_door-2.png" alt="">
                             </div>
                         </div>
-                        <div class="slide active">
-                            <div class="slide_content"><img class="slide_image" src="assets/img/ins_door-3.png" alt="">
+                        <div class="slide slick-current slick-active">
+                            <div class="slide_content">
+                                <img class="slide_image" src="assets/img/ins_door-3.png" alt="">
                             </div>
                         </div>
                         <div class="slide">
-                            <div class="slide_content"><img class="slide_image" src="assets/img/ins_door-4.png" alt="">
+                            <div class="slide_content">
+                                <img class="slide_image" src="assets/img/ins_door-4.png" alt="">
                             </div>
                         </div>
                         <div class="slide">
-                            <div class="slide_content"><img class="slide_image" src="assets/img/ins_door-5.png" alt="">
+                            <div class="slide_content">
+                                <img class="slide_image" src="assets/img/ins_door-5.png" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="slider_controls"><a href="#" class="left"></a>
+
+                    <div class="slider_controls">
+                        <button class="left doors_slider_prev"></button>
+                        <div class="doors_slider_pages_container"></div>
+                        <button class="right doors_slider_next"></button>
+                    </div>
+                </div>
+                <div class="slider  ">
+
+                    <!-- <div class="slider_controls">
+                        <button class="left slick-prev"></button>
                         <ul class="pages">
                             <li>
                                 <div></div>
@@ -525,8 +542,9 @@
                             <li>
                                 <div></div>
                             </li>
-                        </ul><a href="#" class="right"></a>
-                    </div>
+                        </ul>
+                        <button class="right slick-next"></button>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -682,8 +700,10 @@
             </div>
         </div>
     </footer>
-
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>

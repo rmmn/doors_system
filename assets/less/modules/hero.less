@@ -2,9 +2,38 @@
 
 .hero {
     height: 100vh;
-    background: transparent url("../../img/offer-1.png") no-repeat center;
-    background-size: cover;
+    position: relative;
     padding-top: 90px;
+
+    .bg_slider {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100vh !important;
+        top: 0;
+        left: 0;
+        z-index: 0;
+
+        .slick-list {
+            width: inherit !important;
+            height: inherit !important;
+
+            .slick-track {
+                height: inherit !important;
+
+                .bg_image_slider {
+                    position: absolute !important;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    top: 0;
+                    left: 0 !important;
+                    z-index: 0 !important;
+                    background: transparent no-repeat center;
+                    background-size: cover;
+                }
+            }
+        }
+
+    }
 
     &.small {
         height: 260px;
@@ -30,13 +59,14 @@
                 height: 100%;
                 display: grid;
                 grid-template-columns: 1fr;
-                grid-template-rows: auto auto;
+                grid-template-rows: 1fr auto;
 
                 .slides {
                     height: 100%;
                     display: grid;
                     grid-template-columns: 1fr;
                     grid-template-rows: 1fr auto;
+                    align-items: flex-end;
 
                     .slide {
                         margin-bottom: 88px;
@@ -78,6 +108,7 @@
                     grid-template-rows: 1fr;
                     align-items: center;
                     align-content: center;
+                    margin-bottom: 154px;
 
                     .left {
                         display: block;
@@ -88,57 +119,63 @@
                         border: none;
                     }
 
-                    .pages {
+                    .hero_slider_pages_container {
                         grid-column: 2;
                         justify-self: center;
-                        list-style: none;
-                        display: flex;
-                        flex-flow: row nowrap;
-                        align-items: center;
 
-                        li {
-                            margin-right: 10px;
-                            cursor: pointer;
-                            transition: all linear .3s;
+                        .hero_slider_pages {
+                            list-style: none;
+                            display: flex;
+                            flex-flow: row nowrap;
+                            align-items: center;
 
-                            &:last-of-type {
-                                margin-right: 0;
-                            }
+                            li {
+                                margin-right: 10px;
+                                cursor: pointer;
+                                transition: all linear .3s;
 
-                            div {
-                                width: 12px;
-                                height: 12px;
-                                background: rgba(255, 255, 255, 0.6);
-                                border-radius: 2px;
-                                position: relative;
-
-                                &::before {
-                                    content: '';
-                                    display: block;
-                                    position: absolute;
-                                    width: 8px;
-                                    height: 8px;
-                                    background: transparent;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%);
-                                    border-radius: 2px;
+                                &:last-of-type {
+                                    margin-right: 0;
                                 }
-                            }
 
-                            &.active {
-                                div {
-                                    width: 16px;
-                                    height: 16px;
+                                button {
+                                    .fsize(0);
+                                    line-height: 0;
+                                    width: 12px;
+                                    height: 12px;
+                                    background: #E9E9E9;
+                                    border-radius: 2px;
+                                    position: relative;
+                                    border: none;
 
                                     &::before {
-                                        background-color: @lightBlue;
+                                        content: '';
+                                        display: block;
+                                        position: absolute;
+                                        width: 8px;
+                                        height: 8px;
+                                        background: transparent;
+                                        top: 50%;
+                                        left: 50%;
+                                        transform: translate(-50%, -50%);
+                                        border-radius: 2px;
                                     }
                                 }
-                            }
 
-                            &:hover {
-                                opacity: .7;
+                                &.slick-active {
+                                    button {
+                                        width: 16px;
+                                        height: 16px;
+
+                                        &::before {
+                                            background-color: @lightBlue;
+                                        }
+                                    }
+                                }
+
+                                &:hover {
+                                    opacity: .7;
+                                }
                             }
                         }
                     }

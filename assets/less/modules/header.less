@@ -307,7 +307,9 @@
 @media (max-width: 1050px) {
     .header {
         height: auto;
+        max-height: 100vh;
         padding-bottom: 0px;
+        overflow-y: auto;
 
         &-container {
             grid-template-columns: auto 2fr auto auto;
@@ -445,9 +447,19 @@
                     }
 
                     &.show {
+                        position: relative;
                         display: block;
                         grid-column: ~"2/4";
                         grid-row: 2;
+                        overflow-y: auto;
+                        max-height: 100%;
+
+                        &~div {
+                            &~header {
+                                display: none;
+                                overflow: hidden;
+                            }
+                        }
                     }
                 }
 

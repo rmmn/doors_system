@@ -70,6 +70,11 @@ function new_customizer_settings($wp_customize)
         'type'       => 'option'
     ));
 
+    $wp_customize->add_setting('emailsubs_form_shortcode', array(
+        'type'       => 'option',
+        'default'   => '[email-subscribers-form id="1"]'
+    ));
+
     $wp_customize->add_section('theme_header', array(
         'title' => 'Header',
         'description' => '',
@@ -313,6 +318,18 @@ function new_customizer_settings($wp_customize)
         'priority' => 10, // Within the section.
         'section' => 'theme_sections_email', // Required, core or custom.
         'label' => __('E-mail subscribtion section button Title'),
+        'input_attrs' => array(
+            'class' => 'my-custom-class-for-js',
+            'style' => 'border: 1px solid #900',
+            'placeholder' => __(''),
+        )
+    ]);
+
+    $wp_customize->add_control('emailsubs_form_shortcode', [
+        'type' => 'text',
+        'priority' => 10, // Within the section.
+        'section' => 'theme_sections_email', // Required, core or custom.
+        'label' => __('E-mail subscribtion section form ShortCode from plugin Email Subscribers & Newsletters'),
         'input_attrs' => array(
             'class' => 'my-custom-class-for-js',
             'style' => 'border: 1px solid #900',

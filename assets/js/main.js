@@ -18,9 +18,15 @@
         document.querySelectorAll(".collections_list>.checkbox>input"),
         document.querySelectorAll(".styles_list>.checkbox>input"),
         ]
-    }
+    };
 
-        ;
+    let esform = document.querySelector(".emaillist>.es_subscription_form>p>label");
+    let esformi = document.querySelector(".emaillist>.es_subscription_form>p>input");
+
+    if (esformi != undefined) {
+        esformi.setAttribute('id', 'es_gdpr_consent');
+        esform.setAttribute('for', 'es_gdpr_consent');
+    }
 
     let slider = {
 
@@ -47,39 +53,41 @@
         )
     }
 
-    $('.doors_slider').slick({
-        centerMode: true,
-        centerPadding: '0',
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        dots: true,
-        infinite: false,
-        initialSlide: 2,
-        responsive: [{
-            breakpoint: 1370,
-            settings: {
-                arrows: true,
-                centerMode: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-            }
-        },
-        {
-            breakpoint: 1155,
-            settings: {
-                arrows: false,
-                centerMode: false,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                variableWidth: true,
-            }
-        }],
-        arrows: true,
-        prevArrow: $('.doors_slider_prev'),
-        nextArrow: $('.doors_slider_next'),
-        dotsClass: "doors_slider_pages",
-        appendDots: $('.doors_slider_pages_container'),
-    });
+    if (document.getElementById('.doors_slider') != undefined) {
+        $('.doors_slider').slick({
+            centerMode: true,
+            centerPadding: '0',
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            dots: true,
+            infinite: false,
+            initialSlide: 2,
+            responsive: [{
+                breakpoint: 1370,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 1155,
+                settings: {
+                    arrows: false,
+                    centerMode: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    variableWidth: true,
+                }
+            }],
+            arrows: true,
+            prevArrow: $('.doors_slider_prev'),
+            nextArrow: $('.doors_slider_next'),
+            dotsClass: "doors_slider_pages",
+            appendDots: $('.doors_slider_pages_container'),
+        });
+    }
 
     $('.hero_slider').slick({
         centerMode: false,
@@ -108,19 +116,21 @@
         asNavFor: '.hero_slider'
     });
 
-    if (window.outerWidth < 1155) {
-        document.querySelector(".doors_slider_container>.doors_slider>.slick-list>.slick-track").classList.remove("slick-track-child");
-    } else {
-        document.querySelector(".doors_slider_container>.doors_slider>.slick-list>.slick-track").classList.add("slick-track-child");
-    }
-
-    window.addEventListener("resize", function (e) {
-        if (e.currentTarget.clientWidth < 1155) {
+    if (document.getElementById('.doors_slider') != undefined) {
+        if (window.outerWidth < 1155) {
             document.querySelector(".doors_slider_container>.doors_slider>.slick-list>.slick-track").classList.remove("slick-track-child");
         } else {
             document.querySelector(".doors_slider_container>.doors_slider>.slick-list>.slick-track").classList.add("slick-track-child");
         }
-    })
+
+        window.addEventListener("resize", function (e) {
+            if (e.currentTarget.clientWidth < 1155) {
+                document.querySelector(".doors_slider_container>.doors_slider>.slick-list>.slick-track").classList.remove("slick-track-child");
+            } else {
+                document.querySelector(".doors_slider_container>.doors_slider>.slick-list>.slick-track").classList.add("slick-track-child");
+            }
+        })
+    }
 
     if (document.getElementById("lightSlider") != undefined) {
         $('#lightSlider').lightSlider({

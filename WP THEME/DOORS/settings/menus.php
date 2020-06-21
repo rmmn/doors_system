@@ -1,0 +1,29 @@
+<?php
+
+function header_nav()
+{
+    wp_nav_menu([
+        'theme_location'  => 'header',
+        'menu'            => '',
+        'container'       => 'nav',
+        'container_class' => 'nav left',
+        'container_id'    => '',
+        'menu_class'      => 'nav left',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => new HeaderMenuWalker(),
+    ]);
+}
+
+add_action('after_setup_theme', 'theme_register_nav_menu');
+function theme_register_nav_menu()
+{
+    register_nav_menu('header', 'Primary Menu');
+}
